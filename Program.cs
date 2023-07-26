@@ -24,7 +24,7 @@ namespace Map2DifWrapper
 
     class Program
     {
-        public static string version = "1.0.0";
+        public static string version = "1.0.1";
 
         public static Config config;
 
@@ -131,11 +131,11 @@ namespace Map2DifWrapper
 
             map2dif.Start();
 
-            string output = map2dif.StandardOutput.ReadToEnd();
+            string standardOutput = map2dif.StandardOutput.ReadToEnd();
 
-            string[] lines = output.Split('\n');
+            string[] lines = standardOutput.Split('\n');
 
-            Regex isTexture = new Regex(@"^\s+Unable\ to\ load\ texture\ (.+)$", RegexOptions.Compiled);
+            Regex isTexture = new Regex(@"^\s+(?:Unable\ to\ load\ |Loaded\ )texture\ (.+)$", RegexOptions.Compiled); // TODO: This should be read from the .map file directly.
 
             bool rerun = false;
 

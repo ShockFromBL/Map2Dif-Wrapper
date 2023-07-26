@@ -17,3 +17,5 @@ Theoretically, you can use all the parameters that your map2dif executable alrea
 This is mainly aimed with `map2dif_plus.exe` in mind, other map2dif executables will be picked up by the wrapper but your YMMV on whether it works or not.
 
 If you use `auxiliary/NULL` as a texture in your maps, please note that unless you change it to `NULL` in your `.map` file, map2dif will not apply the texture correctly. In the map2dif source, it looks precisely for `NULL`.
+
+The wrapper is not able to print out the dumb Fatal ISV ("In Shipping Version") errors that occur when map2dif encounters an "unrecoverable" situation, this is because they are actually debug breaks and the wrapper is not able to catch them because it's not a debugger. If you get a non-zero error code from map2dif and it doesn't seem clear why, try running your `.map` file without the wrapper and looking at the error it spits out in the console window.
